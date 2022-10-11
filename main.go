@@ -32,6 +32,14 @@ func main() {
 		fmt.Println("Enter N tickets")
 		fmt.Scan(&UserTickets)
 
+		//isValidName := len(firstName) > 1 && len(lastName) > 1
+		//isValidEmail := strings.Contains(email, "@")
+		//isValidTicketNumber := UserTickets > 0
+
+		if remainingTickets < UserTickets {
+			fmt.Printf("We hawe only %v tickets remaining, so you can't book %v tickets.\n", remainingTickets, UserTickets)
+			continue
+		}
 		remainingTickets = remainingTickets - UserTickets
 		bookings = append(bookings, firstName+" "+lastName)
 
@@ -51,5 +59,11 @@ func main() {
 			firstNames = append(firstNames, names[0])
 		}
 		fmt.Printf("The first names of bookings are: %v\n", firstNames)
+
+		if remainingTickets == 0 {
+			//end the program
+			fmt.Printf("Our conference is booked up")
+			break
+		}
 	}
 }
